@@ -1,14 +1,5 @@
-from flask import Flask
-import twilio.twiml
+from os import environ
+from application import app
 
-app = Flask(__name__)
-
-@app.route("/", methods=['GET', 'POST'])
-def hello_monkey():
-    resp = twilio.twiml.Response()
-    resp.say("Hello Monkey")
-
-    return str(resp)
-
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, host='localhost', port=5000)
