@@ -14,6 +14,7 @@ callers = {
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
     from_number = request.values.get('from', None)
+    print "from_number: ", from_number
     resp = twilio.twiml.Response()
 
 
@@ -21,8 +22,6 @@ def hello_monkey():
         resp.say("Hello " + callers[from_number])
     else:
         resp.say("Hello Monkey")
-
-    resp.say("Hello Monkey, " + from_number)
 
     return str(resp)
 
