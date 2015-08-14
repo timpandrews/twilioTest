@@ -16,10 +16,13 @@ def hello_monkey():
     from_number = request.values.get('from', None)
     resp = twilio.twiml.Response()
 
+
     if from_number in callers:
         resp.say("Hello " + callers[from_number])
     else:
         resp.say("Hello Monkey")
+
+    resp.say("Hello Monkey, " + from_number)
 
     return str(resp)
 
