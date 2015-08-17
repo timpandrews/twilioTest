@@ -13,17 +13,18 @@ callers = {
 
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
+
     from_number = request.values.get('From', None)
-    print "from_number: ", from_number
+    if from_number in callers:
+        caller = callers[from_number]
+    else:
+        caller = "Monkey"
+
     resp = twilio.twiml.Response()
 
+    resp.say("Hello " + caller)
 
-    if from_number in callers:
-        resp.say("Hello " + callers[from_number] + ".  You rock!")
-    else:
-        resp.say("hello monkey")
-
-
+    resp.play("http://demo.twilio.com/hellomonkey/monkey.mp3")
 
     return str(resp)
 
