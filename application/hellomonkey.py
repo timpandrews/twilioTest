@@ -19,7 +19,7 @@ def hello_monkey():
 
 
     if from_number in callers:
-        resp.say("Hello " + callers[from_number])
+        resp.say("Hello " + callers[from_number] + ".  You rock!")
     else:
         resp.say("hello monkey")
 
